@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import MainWeatherWidget from './Components//MainWeatherWidget';
 
 function App() {
+  const mockData = [
+    {id:1, desc:'Poznań'},
+    {id:2, desc:'Warszawa'},
+    {id:3, desc:'Opole'},
+    {id:4, desc:'Wrocław'},
+    {id:5, desc:'Zakopane'},
+    {id:6, desc:'Inowrocław'}
+  ]
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MainWeatherWidget items={mockData} />
     </div>
   );
 }
