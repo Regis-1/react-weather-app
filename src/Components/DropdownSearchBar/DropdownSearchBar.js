@@ -1,12 +1,11 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Dropdown from 'react-bootstrap/Dropdown';
+import Form from 'react-bootstrap/Form'
+import Dropdown from 'react-bootstrap/Dropdown'
 
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 const CustomMenu = React.forwardRef(
   ({children, style, className, 'aria-labelledby': labeledBy, onChange}, ref) => {
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState('')
 
     return (
       <div ref={ref}
@@ -26,24 +25,24 @@ const CustomMenu = React.forwardRef(
       </div>
     )
   }
-);
+)
 
 const DropdownSearchBar = (props) => {
-  const [filteredItems, setFilteredItems] = useState([]);
-  const [toggleText, setToggleText] = useState('Select city');
+  const [filteredItems, setFilteredItems] = useState([])
+  const [toggleText, setToggleText] = useState('Select city')
 
   const handleOnChange = (e, inputSetValue) => {
-    inputSetValue(e.target.value);
+    inputSetValue(e.target.value)
     if(e.target.value)
       setFilteredItems(props.items
         .filter(item => item.desc.toLowerCase().includes(e.target.value.toLowerCase()))
-        .filter((_, idx) => idx < 7));
+        .filter((_, idx) => idx < 7))
     else
-      setFilteredItems([]);
+      setFilteredItems([])
   }
 
   const handleItemOnClick = (e) => {
-    setToggleText(e.target.innerText);
+    setToggleText(e.target.innerText)
   }
 
   return (
@@ -60,4 +59,4 @@ const DropdownSearchBar = (props) => {
   )
 }
 
-export default DropdownSearchBar;
+export default DropdownSearchBar
