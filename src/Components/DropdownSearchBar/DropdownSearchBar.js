@@ -27,14 +27,14 @@ const CustomMenu = React.forwardRef(
   }
 )
 
-const DropdownSearchBar = (props) => {
+const DropdownSearchBar = ({items, onItemSelect, variant}) => {
   const [filteredItems, setFilteredItems] = useState([])
   const [toggleText, setToggleText] = useState('Select city')
 
   const handleOnChange = (e, inputSetValue) => {
     inputSetValue(e.target.value)
     if(e.target.value)
-      setFilteredItems(props.items
+      setFilteredItems(items
         .filter(item => item.desc.toLowerCase().includes(e.target.value.toLowerCase()))
         .filter((_, idx) => idx < 7))
     else
@@ -43,12 +43,14 @@ const DropdownSearchBar = (props) => {
 
   const handleItemOnClick = (e) => {
     setToggleText(e.target.innerText)
+    if(onItemSelect)
+      onItemSelect(e)
   }
 
   return (
     <div className='dropdown-search-bar'>
       <Dropdown>
-        <Dropdown.Toggle>{toggleText}</Dropdown.Toggle>
+        <Dropdown.Toggle variant={variant || 'primary'}>{toggleText}</Dropdown.Toggle>
         <Dropdown.Menu as={CustomMenu} onChange={handleOnChange}>
           {filteredItems.map(item => (
             <Dropdown.Item key={item.id} onClick={handleItemOnClick}>{item.desc}</Dropdown.Item>
