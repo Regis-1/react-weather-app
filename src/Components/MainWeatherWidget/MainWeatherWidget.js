@@ -1,6 +1,11 @@
-import { useState, useEffect } from 'react';
+import FormLabel from 'react-bootstrap/FormLabel'
+import Figure from 'react-bootstrap/Figure'
 
-import DropdownSearchBar from "../DropdownSearchBar";
+import { useState, useEffect } from 'react'
+
+import DropdownSearchBar from "../DropdownSearchBar"
+import './style.css'
+import RainIcon from '../../WeatherIcons/wi-rain.svg'
 
 const MainWeatherWidget = () => {
   const [weatherInfo, setWeatherInfo] = useState({
@@ -38,18 +43,37 @@ const MainWeatherWidget = () => {
 
   return (
     <div className="main-weather-widget">
-      <DropdownSearchBar
-        items={searchCities}
-        onItemSelect={handleCitySelect}
-        variant='dark'
-      />
-      <h1>Temp: {weatherInfo.temperature}°C</h1>
-      <h1>Humidity: {weatherInfo.relativeHumidity}%</h1>
-      <h1>Dewpoint: {weatherInfo.dewpoint}°C</h1>
-      <h1>Weather code: {weatherInfo.weatherCode}</h1>
-      <h1>Windspeed: {weatherInfo.windspeed} km/h</h1>
+      <div className='city-select'>
+        <FormLabel htmlFor='DropdownSearchBar'><h2>City:</h2></FormLabel>
+        <DropdownSearchBar
+          id = 'DropdownSearchBar'
+          items={searchCities}
+          onItemSelect={handleCitySelect}
+          variant='dark'
+        />
+      </div>
+      <div className='numerical-weather-info'>
+        <span id='TemperatureInfo'>{weatherInfo.temperature}°C</span>
+        <div>
+          <h3>Humidity: {weatherInfo.relativeHumidity}%</h3>
+          <h3>Dewpoint: {weatherInfo.dewpoint}°C</h3>
+          <h3>Windspeed: {weatherInfo.windspeed} km/h</h3>
+        </div>
+      </div>
+      <div className='iconical-weather-info'>
+        <Figure>
+          <Figure.Image
+            src={RainIcon}
+            width={200}
+            height={200}
+          />
+          <Figure.Caption>
+            {weatherInfo.weatherCode}
+          </Figure.Caption>
+        </Figure>
+      </div>
     </div>
   )
 }
 
-export default MainWeatherWidget;
+export default MainWeatherWidget

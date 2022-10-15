@@ -1,0 +1,9 @@
+body {
+  background-color: black;
+}
+
+.main-column {
+  margin-top: 15vh;
+  background-color: white;
+  border-radius: 16px;
+}

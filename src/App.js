@@ -1,14 +1,25 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
-import MainWeatherWidget from './Components//MainWeatherWidget';
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+import MainWeatherWidget from './Components//MainWeatherWidget'
+import './App.css'
 
 function App() {
 
   return (
-    <div className="App">
-      <MainWeatherWidget />
-    </div>
-  );
+    <Container>
+      <Col
+        md={{span:8, offset:2}}
+        xl={{span:6, offset:3}}
+        className='main-column'
+      >
+        <MainWeatherWidget />
+      </Col>
+    </Container>
+  )
 }
 
-export default App;
+export default App
