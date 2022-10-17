@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react'
 
 import DropdownSearchBar from "../DropdownSearchBar"
 import './style.css'
-import RainIcon from '../../WeatherIcons/wi-rain.svg'
 
 const MainWeatherWidget = () => {
   const [weatherInfo, setWeatherInfo] = useState({
@@ -16,6 +15,18 @@ const MainWeatherWidget = () => {
     windspeed: 0
   })
   const [searchCities, setSearchCities] = useState([])
+  const allWeatherCodes = [
+    {icon: './WeatherIcons/sunny-day.png', codes:[0], desc:'Clear sky'},
+    {icon: './WeatherIcons/drizzle.png', codes:[51, 53, 55], desc:'Drizzle'},
+    {icon: './WeatherIcons/mist.png', codes:[45, 48], desc:'Fog'},
+    {icon: './WeatherIcons/partialy-cloudy.png', codes:[1, 2], desc:'Partly cloudy'},
+    {icon: './WeatherIcons/hail-storm.png', codes:[85, 86], desc:'Hail storm'},
+    {icon: './WeatherIcons/lighting.png', codes:[95, 82, 81, 80], desc:'Thunderstorm'},
+    {icon: './WeatherIcons/rainy-day.png', codes:[61, 63, 65], desc:'Rainy'},
+    {icon: './WeatherIcons/sleet.png', codes:[56, 57], desc:'Sleet'},
+    {icon: './WeatherIcons/overcast-day.png', codes:[3], desc:'Overcast'},
+    {icon: './WeatherIcons/snow-cloud.png', codes:[71, 73, 75, 77], desc:'Snowy'}
+  ]
 
   const handleCitySelect = (e) => {
     const selectedCity = searchCities.filter(item => item.desc == e.target.text)[0]
@@ -63,12 +74,12 @@ const MainWeatherWidget = () => {
       <div className='iconical-weather-info'>
         <Figure>
           <Figure.Image
-            src={RainIcon}
+            src={allWeatherCodes.filter(item => item.codes.includes(weatherInfo.weatherCode))[0].icon}
             width={200}
             height={200}
           />
           <Figure.Caption>
-            {weatherInfo.weatherCode}
+            {allWeatherCodes.filter(item => item.codes.includes(weatherInfo.weatherCode))[0].desc}
           </Figure.Caption>
         </Figure>
       </div>
