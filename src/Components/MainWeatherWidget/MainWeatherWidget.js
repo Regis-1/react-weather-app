@@ -55,7 +55,9 @@ const MainWeatherWidget = () => {
   return (
     <div className="main-weather-widget">
       <div className='city-select'>
-        <FormLabel htmlFor='DropdownSearchBar'><h2>City:</h2></FormLabel>
+        <FormLabel htmlFor='DropdownSearchBar'>
+          <h2><span id='SearchBarLabel'>City:</span></h2>
+        </FormLabel>
         <DropdownSearchBar
           id = 'DropdownSearchBar'
           items={searchCities}

@@ -11,13 +11,14 @@
 .numerical-weather-info {
   margin-top: 10px;
   display: flex;
-  flex-flow: row;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: space-evenly;
 }
 
 #TemperatureInfo {
   font-size: 3em;
+  font-weight: bold;
 }
 
 .iconical-weather-info {
@@ -31,8 +32,13 @@
   margin-bottom: 10px;
 }
 
-
 .figure figcaption {
   font-size: 1.5em;
   text-align: center;
+  color: black;
+  font-weight: bold;
+}
+
+#SearchBarLabel {
+  margin-right: 10px;
 }
